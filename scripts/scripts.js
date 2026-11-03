@@ -9,6 +9,8 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  decorateBlock,
+  loadBlock,
 } from './aem.js';
 
 /**
@@ -53,6 +55,25 @@ export function moveInstrumentation(from, to) {
 export function getContentRoot() {
   const match = window.location.pathname.match(/^\/content\/[^/.]+(?=[/.])/);
   return match ? match[0] : '';
+}
+
+let experienceFragmentBlocks = [];
+
+/**
+ * Header / footer Experience Fragment components (the locked XFs of the template structure,
+ * rendered in the Template Editor) include the header / footer server-rendered by the AEM
+ * components: load their block (CSS + interactions) in place.
+ * @param {Element} main The main element
+ * @returns {Element[]} the header / footer blocks to load
+ */
+function decorateExperienceFragments(main) {
+  return [...main.querySelectorAll('.cmp-experiencefragment')].map((xf) => {
+    const block = xf.querySelector(':scope .header.block, :scope .footer.block');
+    if (!block) return null;
+    block.removeAttribute('data-block-status');
+    document.documentElement.dataset.experienceFragments = 'true';
+    return block;
+  }).filter(Boolean);
 }
 
 /**
@@ -140,6 +161,12 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+  if (main && !doc.documentElement.dataset.experienceFragments) {
+    experienceFragmentBlocks = decorateExperienceFragments(main);
+    if (experienceFragmentBlocks.length) {
+      doc.querySelectorAll('body > header, body > footer').forEach((el) => { el.style.display = 'none'; });
+    }
+  }
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
@@ -161,7 +188,12 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header'));
+  const inlineFragments = doc.documentElement.dataset.experienceFragments === 'true';
+  if (!inlineFragments) loadHeader(doc.querySelector('header'));
+  experienceFragmentBlocks.forEach((block) => {
+    decorateBlock(block);
+    loadBlock(block);
+  });
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -170,7 +202,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(doc.querySelector('footer'));
+  if (!inlineFragments) loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
