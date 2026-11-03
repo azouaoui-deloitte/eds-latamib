@@ -147,6 +147,13 @@ footer .footer-legal a:any-link {
   color: var(--link-color);
 }
 
+footer .footer-contact-text a:hover,
+footer .footer-contact-text a:focus,
+footer .footer-legal a:hover,
+footer .footer-legal a:focus {
+  color: var(--link-hover-color);
+}
+
 /* back to top */
 footer .back-to-top {
   position: fixed;
@@ -181,6 +188,7 @@ footer .back-to-top.show {
 
 footer .back-to-top.show:hover {
   bottom: 45px;
+  color: var(--link-color);
 }
 
 @media (width >= 768px) {

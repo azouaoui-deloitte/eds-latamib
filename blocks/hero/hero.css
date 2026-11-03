@@ -128,35 +128,28 @@
   padding: 0;
   font-size: round(var(--bfs) * var(--u), 1px);
   line-height: round(var(--blh) * var(--u), 1px);
+  transition: background-color 0.1s cubic-bezier(0.45, 0, 0.55, 1), filter 0.1s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
-/* entrance animation (title then button, like the source slider) */
-.hero.hero-animate h1 {
-  animation: hero-title-in 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.5s both;
+/* slider button hover (frame_hover: bgc #007aff, brightness 120%, 100ms power1.inOut) */
+.hero a.button.primary:hover {
+  filter: brightness(120%);
 }
 
+/* entrance (slider frames): the title is shown at once (chars speed 0), the button fades in from
+   1px left / 1px down (power2.inOut) */
 .hero.hero-animate .button-wrapper {
-  animation: hero-fade-in 0.8s ease-out 1.27s both;
-}
-
-@keyframes hero-title-in {
-  from {
-    opacity: 0;
-    transform: translateX(8%);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  animation: hero-fade-in 2.8s cubic-bezier(0.645, 0.045, 0.355, 1) 0.62s both;
 }
 
 @keyframes hero-fade-in {
   from {
     opacity: 0;
+    transform: translate(-1px, 1px);
   }
 
   to {
     opacity: 1;
+    transform: none;
   }
 }

@@ -394,16 +394,17 @@ body.nav-open {
     justify-content: center;
     width: 65px;
     height: 65px;
+    border-right: 2px solid #2867b2;
     border-radius: 50%;
     background-color: #2867b2;
-    color: #fff;
+    color: #69727d;
     transition: 0.3s;
   }
 
   header .nav-social .icon {
     width: 18px;
     height: 18px;
-    background-color: currentcolor;
+    background-color: #fff;
     mask: url('../../icons/linkedin.svg') center / contain no-repeat;
   }
 
@@ -412,9 +413,18 @@ body.nav-open {
   }
 
   header .nav-social:hover {
+    border-color: rgb(255 255 255 / 20%);
+    color: #fff;
     background-color: #fff;
-    color: #2867b2;
     opacity: 0.9;
+  }
+
+  header .nav-social:focus {
+    color: var(--link-hover-color);
+  }
+
+  header .nav-social:hover .icon {
+    background-color: #043c54;
   }
 }
 

@@ -108,4 +108,13 @@ main .section.split .columns > div > div:first-child > :last-child {
   main .section.split .columns > div > div + div .button-wrapper {
     margin: -100px 0 0 100px;
   }
+
+  /* the source icon is followed by a space character (0.27em in Nunito Sans) */
+  main .section.split a.button.secondary::before {
+    margin-right: calc(8px + 0.27em);
+  }
+
+  main .section.split a.button.secondary:hover::before {
+    margin-right: calc(3px + 0.27em);
+  }
 }
