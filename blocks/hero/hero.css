@@ -15,7 +15,8 @@
   --bleft: 6;
   --bw: 135;
   --bfs: 8;
-  --blh: 30;
+  --blh: 29;
+  --bh: 30;
 
   position: relative;
   height: calc(var(--gh) * var(--u));
@@ -36,7 +37,8 @@
     --bleft: -3;
     --bw: 145;
     --bfs: 9;
-    --blh: 32;
+    --blh: 31;
+    --bh: 32;
   }
 }
 
@@ -55,6 +57,7 @@
     --bw: 194;
     --bfs: 12;
     --blh: 42;
+    --bh: 43;
   }
 }
 
@@ -72,7 +75,8 @@
     --bleft: 0;
     --bw: 228;
     --bfs: 15;
-    --blh: 51;
+    --blh: 50;
+    --bh: 51;
   }
 }
 
@@ -125,6 +129,7 @@
 
 .hero a.button.primary {
   width: calc(var(--bw) * var(--u));
+  height: round(var(--bh) * var(--u), 1px);
   padding: 0;
   font-size: round(var(--bfs) * var(--u), 1px);
   line-height: round(var(--blh) * var(--u), 1px);

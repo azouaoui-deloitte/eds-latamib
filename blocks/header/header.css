@@ -156,6 +156,11 @@ header .nav-search-toggle {
   mask: url('../../icons/search.svg') center / 21px 21px no-repeat;
 }
 
+/* the source toggles (div / button) show no focus ring */
+header .nav-search-toggle:focus {
+  outline: 0;
+}
+
 header .nav-search[aria-expanded="true"] .nav-search-toggle {
   mask-image: url('../../icons/close.svg');
   mask-size: 20px 20px;
@@ -225,6 +230,10 @@ header .nav-hamburger button {
   border: 0;
   background: none;
   cursor: pointer;
+}
+
+header .nav-hamburger button:focus {
+  outline: 0;
 }
 
 header .nav-hamburger-icon,
