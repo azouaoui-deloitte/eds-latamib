@@ -7,7 +7,9 @@
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/image/v1/image",
-            "template": {}
+            "template": {
+              "model": "image"
+            }
           }
         }
       }
@@ -21,12 +23,14 @@
           "component": "reference",
           "name": "image",
           "label": "Image",
-          "multi": false
+          "multi": false,
+          "valueType": "string"
         },
         {
           "component": "text",
           "name": "imageAlt",
-          "label": "Alt Text"
+          "label": "Alt Text",
+          "valueType": "string"
         }
       ]
     }

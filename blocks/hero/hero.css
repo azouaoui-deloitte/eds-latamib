@@ -1,37 +1,151 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
+/* Revolution Slider grid: <768px scales with the viewport (480px grid), fixed sizes above */
+.hero {
+  --hero-scale: calc(100vw / 480);
+
+  position: relative;
+  height: calc(600 * var(--hero-scale));
+  overflow: hidden;
 }
 
-.hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+.hero .hero-image,
+.hero .hero-image > div,
+.hero .hero-image picture {
+  position: absolute;
+  inset: 0;
+}
+
+.hero .hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero .hero-content {
+  position: absolute;
+  inset: 0;
+}
+
+.hero .hero-content > div {
+  position: absolute;
+  top: calc(144 * var(--hero-scale));
+  left: calc(39 * var(--hero-scale));
+  width: calc(423 * var(--hero-scale));
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  margin: 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: calc(25 * var(--hero-scale));
+  font-weight: 900;
+  line-height: calc(36 * var(--hero-scale));
 }
 
-.hero picture {
+.hero .button-wrapper {
   position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  top: calc(247 * var(--hero-scale));
+  left: calc(6 * var(--hero-scale));
+  margin: 0;
+  line-height: 0;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero a.button.primary {
+  width: calc(135 * var(--hero-scale));
+  padding: 0;
+  font-size: calc(8 * var(--hero-scale));
+  line-height: calc(30 * var(--hero-scale));
 }
 
-@media (width >= 900px) {
+@media (width >= 768px) {
   .hero {
-    padding: 40px 32px;
+    height: 630px;
+  }
+
+  .hero .hero-content > div {
+    top: 155px;
+    left: 15px;
+    width: 1009px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  .hero .button-wrapper {
+    top: 267px;
+    left: -3px;
+  }
+
+  .hero a.button.primary {
+    width: 145px;
+    font-size: 9px;
+    line-height: 32px;
+  }
+}
+
+@media (width >= 1025px) {
+  .hero {
+    height: 620px;
+  }
+
+  .hero .hero-content {
+    left: 50%;
+    width: 1200px;
+    margin-left: -600px;
+  }
+
+  .hero .hero-content > div {
+    top: 163px;
+    left: 19px;
+    width: 1145px;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+    line-height: 80px;
+  }
+
+  .hero .button-wrapper {
+    top: 314px;
+    left: 0;
+  }
+
+  .hero a.button.primary {
+    width: 228px;
+    font-size: 15px;
+    line-height: 51px;
+  }
+}
+
+/* entrance animation (title then button, like the source slider) */
+.hero.hero-animate h1 {
+  animation: hero-title-in 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.5s both;
+}
+
+.hero.hero-animate .button-wrapper {
+  animation: hero-fade-in 0.8s ease-out 1.27s both;
+}
+
+@keyframes hero-title-in {
+  from {
+    opacity: 0;
+    transform: translateX(8%);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

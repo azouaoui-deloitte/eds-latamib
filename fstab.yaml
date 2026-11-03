@@ -1,5 +1,7 @@
 mountpoints:
   /:
-    url: "https://author-p130360-e1272151.adobeaemcloud.com/bin/franklin.delivery/adobe-rnd/aem-boilerplate-xwalk/main"
+    # AEM authoring (xwalk). Local demo: AEM SDK author behind the HTTPS proxy (see docs/aem-ue-local.md).
+    # Not reachable by aem.page/aem.live: preview/publish from the local SDK is intentionally disabled.
+    url: "https://localhost:8443/bin/franklin.delivery/azouaoui-deloitte/eds-latamib/main"
     type: "markup"
     suffix: ".html"

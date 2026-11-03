@@ -31,10 +31,48 @@
           "label": "Style",
           "options": [
             {
-              "name": "Highlight",
-              "value": "highlight"
+              "name": "Centered text",
+              "value": "centered"
+            },
+            {
+              "name": "Navy background",
+              "value": "dark"
+            },
+            {
+              "name": "Teal background",
+              "value": "teal"
+            },
+            {
+              "name": "Light grey background",
+              "value": "grey"
+            },
+            {
+              "name": "Full width below desktop (10px gutters)",
+              "value": "fluid"
+            },
+            {
+              "name": "Split: text + overflowing image (About)",
+              "value": "split"
+            },
+            {
+              "name": "Services band spacing",
+              "value": "services"
+            },
+            {
+              "name": "Team band spacing",
+              "value": "team"
+            },
+            {
+              "name": "Experience band spacing",
+              "value": "experience"
+            },
+            {
+              "name": "Call-to-action band spacing",
+              "value": "cta-band"
             }
-          ]
+          ],
+          "valueType": "string",
+          "description": "Background and layout of the section (several values allowed)"
         }
       ]
     }
@@ -50,6 +88,8 @@
         "hero",
         "cards",
         "columns",
+        "image-link",
+        "cta",
         "fragment"
       ]
     }

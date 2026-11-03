@@ -15,6 +15,25 @@
         "label": "Description"
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Social image (og:image)",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "nav",
+        "label": "Navigation page"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "footer",
+        "label": "Footer page"
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "keywords",
@@ -30,12 +49,14 @@
         "component": "reference",
         "name": "image",
         "label": "Image",
-        "multi": false
+        "multi": false,
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "imageAlt",
-        "label": "Alt Text"
+        "label": "Alt Text",
+        "valueType": "string"
       }
     ]
   },
@@ -86,17 +107,20 @@
       {
         "component": "aem-content",
         "name": "link",
-        "label": "Link"
+        "label": "Link",
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "linkText",
-        "label": "Text"
+        "label": "Text",
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "linkTitle",
-        "label": "Title"
+        "label": "Title",
+        "valueType": "string"
       },
       {
         "component": "select",
@@ -104,18 +128,19 @@
         "label": "Type",
         "options": [
           {
-            "name": "default",
+            "name": "default (text link)",
             "value": ""
           },
           {
-            "name": "primary",
+            "name": "primary (orange button)",
             "value": "primary"
           },
           {
-            "name": "secondary",
+            "name": "secondary (arrow link)",
             "value": "secondary"
           }
-        ]
+        ],
+        "valueType": "string"
       }
     ]
   },
@@ -134,8 +159,67 @@
         "label": "Style",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "Centered text",
+            "value": "centered"
+          },
+          {
+            "name": "Navy background",
+            "value": "dark"
+          },
+          {
+            "name": "Teal background",
+            "value": "teal"
+          },
+          {
+            "name": "Light grey background",
+            "value": "grey"
+          },
+          {
+            "name": "Full width below desktop (10px gutters)",
+            "value": "fluid"
+          },
+          {
+            "name": "Split: text + overflowing image (About)",
+            "value": "split"
+          },
+          {
+            "name": "Services band spacing",
+            "value": "services"
+          },
+          {
+            "name": "Team band spacing",
+            "value": "team"
+          },
+          {
+            "name": "Experience band spacing",
+            "value": "experience"
+          },
+          {
+            "name": "Call-to-action band spacing",
+            "value": "cta-band"
+          }
+        ],
+        "valueType": "string",
+        "description": "Background and layout of the section (several values allowed)"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Services (navy cards, watermark initials, icon)",
+            "value": "services"
+          },
+          {
+            "name": "Team (photo, name, role)",
+            "value": "team"
           }
         ]
       }
@@ -148,14 +232,21 @@
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Image",
+        "label": "Image / icon",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Text (heading, text, link)",
         "valueType": "string"
       }
     ]
@@ -176,6 +267,32 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "cta",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Heading and button (bold italic link = outline button)",
+        "valueType": "string"
       }
     ]
   },
@@ -203,15 +320,40 @@
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt",
+        "label": "Image alt text",
         "value": ""
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Heading and button (bold link = button)",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "image-link",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
       }
     ]
   }

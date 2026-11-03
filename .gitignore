@@ -11,3 +11,9 @@ helix-importer-ui
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
+
+# local import / migration workspace
+import-work/
+
+# local preview assets (mirror of the AEM DAM, see import-work/)
+content/

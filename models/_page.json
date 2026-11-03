@@ -16,6 +16,25 @@
           "label": "Description"
         },
         {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Social image (og:image)",
+          "multi": false
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "nav",
+          "label": "Navigation page"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "footer",
+          "label": "Footer page"
+        },
+        {
           "component": "text",
           "valueType": "string",
           "name": "keywords",
