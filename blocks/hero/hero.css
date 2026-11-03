@@ -1,10 +1,79 @@
-/* Revolution Slider grid: <768px scales with the viewport (480px grid), fixed sizes above */
+/* Revolution Slider grid: the level is the smallest responsive level (1240/1024/778/480) strictly
+   wider than the viewport; its grid (1200/1024/768/480) scales down with the viewport, never up.
+   --u = 1 grid px; the values are the slider layer settings (xo/yo, dim, text size/line); the
+   slider rounds scaled text sizes to whole pixels. */
 .hero {
-  --hero-scale: calc(100vw / 480);
+  --u: calc(100vw / 480);
+  --gw: 480;
+  --gh: 600;
+  --top: 144;
+  --left: 39;
+  --w: 423;
+  --fs: 25;
+  --lh: 36;
+  --btop: 247;
+  --bleft: 6;
+  --bw: 135;
+  --bfs: 8;
+  --blh: 30;
 
   position: relative;
-  height: calc(600 * var(--hero-scale));
+  height: calc(var(--gh) * var(--u));
   overflow: hidden;
+}
+
+@media (width >= 480px) {
+  .hero {
+    --u: min(1px, 100vw / 768);
+    --gw: 768;
+    --gh: 630;
+    --top: 155;
+    --left: 15;
+    --w: 1009;
+    --fs: 48;
+    --lh: 52;
+    --btop: 267;
+    --bleft: -3;
+    --bw: 145;
+    --bfs: 9;
+    --blh: 32;
+  }
+}
+
+@media (width >= 778px) {
+  .hero {
+    --u: calc(100vw / 1024);
+    --gw: 1024;
+    --gh: 600;
+    --top: 85;
+    --left: 15;
+    --w: 1009;
+    --fs: 60;
+    --lh: 62;
+    --btop: 358.5;
+    --bleft: 1;
+    --bw: 194;
+    --bfs: 12;
+    --blh: 42;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero {
+    --u: min(1px, 100vw / 1200);
+    --gw: 1200;
+    --gh: 620;
+    --top: 163;
+    --left: 19;
+    --w: 1145;
+    --fs: 50;
+    --lh: 80;
+    --btop: 314;
+    --bleft: 0;
+    --bw: 228;
+    --bfs: 15;
+    --blh: 51;
+  }
 }
 
 .hero .hero-image,
@@ -23,100 +92,42 @@
 
 .hero .hero-content {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: calc(var(--gw) * var(--u));
+  margin-left: calc(var(--gw) * var(--u) / -2);
 }
 
 .hero .hero-content > div {
   position: absolute;
-  top: calc(144 * var(--hero-scale));
-  left: calc(39 * var(--hero-scale));
-  width: calc(423 * var(--hero-scale));
+  top: calc(var(--top) * var(--u));
+  left: calc(var(--left) * var(--u));
+  width: calc(var(--w) * var(--u));
 }
 
 .hero h1 {
   margin: 0;
   color: #fff;
   font-family: var(--heading-font-family);
-  font-size: calc(25 * var(--hero-scale));
+  font-size: round(var(--fs) * var(--u), 1px);
   font-weight: 900;
-  line-height: calc(36 * var(--hero-scale));
+  line-height: round(var(--lh) * var(--u), 1px);
 }
 
 .hero .button-wrapper {
   position: absolute;
-  top: calc(247 * var(--hero-scale));
-  left: calc(6 * var(--hero-scale));
+  top: calc(var(--btop) * var(--u));
+  left: calc(var(--bleft) * var(--u));
   margin: 0;
   line-height: 0;
 }
 
 .hero a.button.primary {
-  width: calc(135 * var(--hero-scale));
+  width: calc(var(--bw) * var(--u));
   padding: 0;
-  font-size: calc(8 * var(--hero-scale));
-  line-height: calc(30 * var(--hero-scale));
-}
-
-@media (width >= 768px) {
-  .hero {
-    height: 630px;
-  }
-
-  .hero .hero-content > div {
-    top: 155px;
-    left: 15px;
-    width: 1009px;
-  }
-
-  .hero h1 {
-    font-size: 48px;
-    line-height: 52px;
-  }
-
-  .hero .button-wrapper {
-    top: 267px;
-    left: -3px;
-  }
-
-  .hero a.button.primary {
-    width: 145px;
-    font-size: 9px;
-    line-height: 32px;
-  }
-}
-
-@media (width >= 1025px) {
-  .hero {
-    height: 620px;
-  }
-
-  .hero .hero-content {
-    left: 50%;
-    width: 1200px;
-    margin-left: -600px;
-  }
-
-  .hero .hero-content > div {
-    top: 163px;
-    left: 19px;
-    width: 1145px;
-  }
-
-  .hero h1 {
-    font-size: 50px;
-    line-height: 80px;
-  }
-
-  .hero .button-wrapper {
-    top: 314px;
-    left: 0;
-  }
-
-  .hero a.button.primary {
-    width: 228px;
-    font-size: 15px;
-    line-height: 51px;
-  }
+  font-size: round(var(--bfs) * var(--u), 1px);
+  line-height: round(var(--blh) * var(--u), 1px);
 }
 
 /* entrance animation (title then button, like the source slider) */

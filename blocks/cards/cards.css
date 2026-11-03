@@ -185,12 +185,14 @@
   color: var(--heading-color);
 }
 
+/* 26.25px inline span inside a 30px line on the source */
 .cards.team .cards-card-body p {
   margin: 0;
+  padding: 1.875px 0;
   color: #797979;
   font-size: 14px;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 26.25px;
   text-transform: uppercase;
 }
 

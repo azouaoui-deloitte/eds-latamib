@@ -1,6 +1,7 @@
 /*
  * Latam IB – global styles (mobile first).
- * Breakpoints follow the source site (Elementor): tablet >= 768px, desktop >= 1025px.
+ * Breakpoints follow the source site (Elementor): tablet >= 768px, desktop >= 1025px; the boxed
+ * container follows the Engitech theme steps (750 / 970 / 1200px minus the 15px column padding).
  */
 
 :root {
@@ -39,9 +40,21 @@
   }
 }
 
+@media (width >= 992px) {
+  :root {
+    --container: 940px;
+  }
+}
+
 @media (width >= 1025px) {
   :root {
-    --container: min(1170px, 100vw - 30px);
+    --header-height: 82px;
+  }
+}
+
+@media (width >= 1230px) {
+  :root {
+    --container: 1170px;
     --header-height: 83px;
   }
 }

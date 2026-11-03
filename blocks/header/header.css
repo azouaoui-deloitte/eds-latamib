@@ -417,3 +417,39 @@ body.nav-open {
     opacity: 0.9;
   }
 }
+
+/* small desktop (940px container): the Elementor columns shrink, the logo column absorbs it and the
+   609px menu overflows its 571px column from the left */
+@media (width >= 1025px) and (width < 1230px) {
+  header .nav-brand {
+    display: flex;
+    flex-basis: 209px;
+    align-items: center;
+  }
+
+  header .nav-brand .nav-logo-desktop img {
+    width: 179px;
+    height: auto;
+  }
+
+  header .nav-sections {
+    flex-basis: 601px;
+  }
+
+  header .nav-sections ul {
+    justify-content: flex-start;
+    padding: 0 0 0 15px;
+  }
+
+  header .nav-sections li {
+    margin-left: 20px;
+  }
+
+  header .nav-sections li:first-child {
+    margin-left: 0;
+  }
+
+  header .nav-tools {
+    padding: 8px 15px 0 0;
+  }
+}

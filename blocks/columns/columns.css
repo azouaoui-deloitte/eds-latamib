@@ -85,13 +85,15 @@ main .section.split .columns > div > div:first-child > :last-child {
     padding-top: 50px;
   }
 
+  /* two 50% Elementor columns, the text one with a 70px right margin */
   main .section.split .columns > div > div:first-child {
-    flex: 0 0 485px;
+    flex: 0 0 calc(var(--container) / 2 - 100px);
     margin-right: 70px;
   }
 
   main .section.split .columns > div > div + div img {
-    width: 937px;
+    /* widget margin -20px -360px 0 -22px: column width + 382px */
+    width: calc(var(--container) / 2 + 352px);
     max-width: none;
     margin: -20px 0 0 -22px;
   }
